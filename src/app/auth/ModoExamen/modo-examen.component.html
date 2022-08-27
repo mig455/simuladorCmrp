@@ -15,33 +15,33 @@
 </div>
 <div class="container" style="width: 63%;">
   <div style="padding:0.75rem 1.25rem;display: flex;">
-    <div style="color:#fff;display: flex;justify-content: center;">
-      <div class="card CardsEstudio" style="border-radius:20px;">
-        <div class="card-header" style="border-radius: 20px 20px 0px 0px; border-bottom: 1px solid #fff; background: #0C9AFE">
+    <div  class="row" style="color:#fff;justify-content: center;">
+      <div class="card CardsEstudio col-12 col-md-4" style="border-radius:20px;">
+        <div class="card-header row" style="border-radius: 20px 20px 0px 0px; border-bottom: 1px solid #fff; background: #0C9AFE">
             <div class="text-center" style="padding: 0px 12px;"><b class="card-title">Número de simulaciones totales</b></div>
         </div>
-        <div class="card-body" style="border-radius: 0px 0px 20px 20px; background: #0C9AFE">
+        <div class="card-body row" style="border-radius: 0px 0px 20px 20px; background: #0C9AFE">
           <div class="text-center"><b style="font-size:60px;">{{SimulacionesTotales}}</b></div>
         </div>
     </div>
-    <div class="card CardsEstudio" style="border-radius:20px;">
-        <div class="card-header" style="border-radius: 20px 20px 0px 0px; border-bottom: 1px solid #fff; background: #0C9AFE">
+    <div class="card CardsEstudio col-12 col-md-4" style="border-radius:20px;">
+        <div class="card-header row" style="border-radius: 20px 20px 0px 0px; border-bottom: 1px solid #fff; background: #0C9AFE">
             <div class="text-center">
                 <b class="card-title">Número de simulaciones inconclusas</b>
             </div>
         </div>
-        <div class="card-body" style="border-radius: 0px 0px 20px 20px; background: #0C9AFE">
+        <div class="card-body row" style="border-radius: 0px 0px 20px 20px; background: #0C9AFE">
           <div class="text-center"><b style="font-size:60px;">{{SimulacionesInconclusas}}</b></div>
 
         </div>
     </div>
-    <div class="card CardsEstudio" style="border-radius:20px;">
-        <div class="card-header" style="border-radius: 20px 20px 0px 0px; border-bottom: 1px solid #fff; background: #0C9AFE">
+    <div class="card CardsEstudio col-12 col-md-4" style="border-radius:20px;">
+        <div class="card-header row" style="border-radius: 20px 20px 0px 0px; border-bottom: 1px solid #fff; background: #0C9AFE">
             <div class="text-center" style="padding: 12px 0px;">
                 <b class="card-title">Tiempo de estudio total</b>
             </div>
         </div>
-        <div class="card-body" style="border-radius: 0px 0px 20px 20px; background: #0C9AFE">
+        <div class="card-body row" style="border-radius: 0px 0px 20px 20px; background: #0C9AFE">
             <div class="text-center"><b style="font-size:60px;">{{HoraMostrar}}:{{MinutoMostrar}}</b></div>
             <div class="text-center"><span class="card-text">hh/mm</span></div>
         </div>
@@ -63,6 +63,70 @@
         </div>
         <div class="col-6" style="text-align: right;font-size: 17px;font-weight: bold;">
           Puntaje promedio / 100
+        </div>
+      </div>
+    </div>
+    <div *ngIf="ResultadosPorDominio!=undefined" class="titulo" style="font-weight: 400 !important;">
+      Mejor puntaje por pilares
+      <br>
+      <div class="row" style="margin-bottom: 10px">
+        <div class="col-12 col-md-4">
+          <div style="display: flex;justify-content: center;margin-left: -25px;">
+            <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio1"></app-dona-puntos>
+          </div>
+          <div class="subtitulo">
+            Pilar 1:
+          </div>
+          <div style="font-size: 13px">
+            Negocios y gestión.
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div style="display: flex;justify-content: center;margin-left: -25px;">
+            <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio2"></app-dona-puntos>
+          </div>
+          <div class="subtitulo">
+            Pilar 2:
+          </div>
+          <div style="font-size: 13px">
+            Confiabilidad del equipo.
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div style="display: flex;justify-content: center;margin-left: -25px;">
+            <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio3"></app-dona-puntos>
+          </div>
+          <div class="subtitulo">
+            Pilar 3:
+          </div>
+          <div style="font-size: 13px">
+            Confiabilidad del proceso de fabricación.
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div style="display: flex;justify-content: center;margin-left: -25px;">
+            <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio4"></app-dona-puntos>
+          </div>
+          <div class="subtitulo">
+            Pilar 4:
+          </div>
+          <div style="font-size: 13px">
+            Organización y liderazgo.
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div style="display: flex;justify-content: center;margin-left: -25px;">
+            <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio5"></app-dona-puntos>
+          </div>
+          <div class="subtitulo">
+            Pilar 5:
+          </div>
+          <div style="font-size: 13px">
+            Gestión del trabajo.
+          </div>
         </div>
       </div>
     </div>
@@ -110,7 +174,9 @@
         Recuerda que para aprobar debes cumplir con 3 condiciones:
         <br>
         1.- Obtener, como mínimo, una calificación global mayor de 60%.
+        <br>
         2.- Obtener, como mínimo, una calificación mayor de 60% en cada pilar de conocimiento.
+        <br>
         3.- Independientemente de las condiciones 1 y 2, debes obtener un puntaje mayor al de la media de los puntajes de todos los usuarios en ese intento. (El cálculo de la media sólo tomará las calificaciones registradas en ese intento hasta el momento de su simulación. Esta se fijará solo para usted y no variará al recibir nuevas calificaciones para ese intento).
       </div>
       <form (submit)="RegistrarExamen()" [formGroup]="userForm">
@@ -119,7 +185,7 @@
             <div class="col-md-12" style="margin-top: 10px ">
               <div class="subtitulo">Nombre de la simulación:</div>
               <mat-form-field appearance="outline" [floatLabel]="'always'" style="width: 100%;">
-                <input type="text" placeholder="Escriba el nombre de la simulacion" formControlName="NombreSimulacion" matInput />
+                <input type="text" placeholder="Escriba el nombre de la simulación" formControlName="NombreSimulacion" matInput />
                 <mat-error *ngIf="userForm.invalid">Debe ingresar un nombre para la simulación</mat-error>
               </mat-form-field>
               </div>
@@ -263,7 +329,7 @@
     <div class="card-body" style="border-radius: 0px 0px 20px 20px;padding-top:0px;padding-bottom:0px; ">
     </div>
   </div>
-
+<br>
 </div>
 
 

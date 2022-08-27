@@ -1,8 +1,5 @@
 .CardsEstudio{
   border-radius: 20px;
-  width: 31%;
-  margin-left: 7px;
-  margin-right: 7px;
 }
 .titulo {
   font-size: 30px;
@@ -21,9 +18,12 @@
   margin-top: 5px;
   height: 20%;
 }
+.CardsDominio:hover {
+  text-decoration:underline;
+  color: white;
+}
 .CardsDominioSelect{
   border-radius: 20px;
-  width: 48%;
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -36,9 +36,5 @@
 }
 ::ng-deep .mat-progress-bar {
   border-radius: 10px;
-}
-.donaEstudio{
-  display: flex;
-  justify-content: center;
 }
 
