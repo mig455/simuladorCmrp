@@ -51,78 +51,28 @@
     </div>
   </div>
   <br>
-  <div *ngIf="ResultadosPorDominio!=undefined" class="titulo" style="font-weight: 400 !important;margin-top: 15px;margin-bottom: 40px;">
+  <div style="font-weight: 400 !important;margin-bottom: 40px;">
     <div class="titulo" style="margin-bottom: 15px">
-      Mejor puntaje por pilares
-    </div>
-    <div class="row" style="margin-bottom: 15px">
-      <div class="col-12 col-md-4">
-        <div style="display: flex;justify-content: center;">
-        <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio1"></app-dona-puntos>
-      </div>
-      <div class="item-leyenda-dona">
-        <div class="subtitulo">
-          Pilar 1:
-        </div>
-        <div style="font-size: 14px">
-          Negocios y gestión.
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-4">
-      <div style="display: flex;justify-content: center;">
-        <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio2"></app-dona-puntos>
-      </div>
-      <div class="item-leyenda-dona">
-        <div class="subtitulo">
-          Pilar 2:
-        </div>
-        <div style="font-size: 14px">
-          Confiabilidad del equipo.
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-4">
-      <div style="display: flex;justify-content: center;">
-        <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio3"></app-dona-puntos>
-      </div>
-      <div class="item-leyenda-dona">
-        <div class="subtitulo">
-          Pilar 3:
-        </div>
-        <div style="font-size: 14px">
-          Confiabilidad del proceso de fabricación.
-        </div>
-      </div>
+    Mejor puntaje por pilares
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div style="display: flex;justify-content: center;">
-        <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio4"></app-dona-puntos>
-      </div>
+  <div *ngIf="ResultadosPorDominio!=undefined">
+    <div class="row titulo" style="font-weight: 400 !important;margin-bottom: 10px;">
+    <ng-container *ngFor="let itemDominios of ResultadosPorDominio" >
+      <div class="col-12 col-md-4">
+        <div style="display: flex;justify-content: center;">
+          <app-dona-puntos [Puntos]="itemDominios.promedio"></app-dona-puntos>
+        </div>
       <div class="item-leyenda-dona">
         <div class="subtitulo">
-          Pilar 4:
+          Pilar {{itemDominios.id}}:
         </div>
         <div style="font-size: 14px">
-          Organización y liderazgo.
+          {{itemDominios.nombre}}
         </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div style="display: flex;justify-content: center;">
-        <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio5"></app-dona-puntos>
-      </div>
-      <div class="item-leyenda-dona">
-        <div class="subtitulo">
-          Pilar 5:
         </div>
-        <div style="font-size: 14px">
-          Gestión del trabajo.
         </div>
-      </div>
-    </div>
+    </ng-container>
     </div>
   </div>
 

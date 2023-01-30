@@ -69,75 +69,23 @@
 
       </div>
     </div>
-    <div *ngIf="ResultadosPorDominio!=undefined" class="titulo" style="font-weight: 400 !important;margin-bottom: 10px;">
-      <div class="row">
+    <div *ngIf="ResultadosPorDominio!=undefined">
+      <div class="row titulo" style="font-weight: 400 !important;margin-bottom: 10px;">
+      <ng-container *ngFor="let itemDominios of ResultadosPorDominio" >
         <div class="col-12 col-md-4">
           <div style="display: flex;justify-content: center;">
-          <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio1"></app-dona-puntos>
-        </div>
+            <app-dona-puntos [Puntos]="itemDominios.promedio"></app-dona-puntos>
+          </div>
         <div class="item-leyenda-dona">
           <div class="subtitulo">
-            Pilar 1:
+            Pilar {{itemDominios.id}}:
           </div>
           <div style="font-size: 14px">
-            Negocios y gestión.
+            {{itemDominios.nombre}}
           </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div style="display: flex;justify-content: center;">
-          <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio2"></app-dona-puntos>
-        </div>
-        <div class="item-leyenda-dona">
-          <div class="subtitulo">
-            Pilar 2:
           </div>
-          <div style="font-size: 14px">
-            Confiabilidad del equipo.
           </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div style="display: flex;justify-content: center;">
-          <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio3"></app-dona-puntos>
-        </div>
-        <div class="item-leyenda-dona">
-          <div class="subtitulo">
-            Pilar 3:
-          </div>
-          <div style="font-size: 14px">
-            Confiabilidad del proceso de fabricación.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div style="display: flex;justify-content: center;">
-          <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio4"></app-dona-puntos>
-        </div>
-        <div class="item-leyenda-dona">
-          <div class="subtitulo">
-            Pilar 4:
-          </div>
-          <div style="font-size: 14px">
-            Organización y liderazgo.
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6">
-        <div style="display: flex;justify-content: center;">
-          <app-dona-puntos [Puntos]="ResultadosPorDominio.dominio5"></app-dona-puntos>
-        </div>
-        <div class="item-leyenda-dona">
-          <div class="subtitulo">
-            Pilar 5:
-          </div>
-          <div style="font-size: 14px">
-            Gestión del trabajo.
-          </div>
-        </div>
-      </div>
+      </ng-container>
     </div>
     <div class="card" *ngIf="Promedio>=60" style="margin-top:15px; margin-bottom: 15px; font-size: 13px;color:#706E81 ;background-color: #FFFDEE;border-radius: 5px;">
       Tu puntaje está dentro de lo requerido para aprobar el modo entrenamiento. Conseguiste más del 60% de puntaje en cada pilar de conocimiento.
