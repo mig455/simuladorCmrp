@@ -97,7 +97,30 @@
             Selecciona el pilar que deseas estudiar:
           </div>
           <div class="row">
-            <div *ngIf="DominioSeleccionado!=1" class="col-12 col-md-6 CardsDominio" (click)="DominioSeleccionado=1">
+            <ng-container *ngFor="let item of ListaLogo">
+              <div *ngIf="DominioSeleccionado!= item.id" class="col-12 col-md-6 CardsDominio" (click)="DominioSeleccionado=item.id">
+                <div class="card-body row" style="border-radius: 20px 20px 20px 20px; background: #0C9AFE ;width:103%" >
+                  <div class="col-md-2" style="display: flex; justify-content: center;">
+                    <img style="height: 50px;" src={{item.imgLogo}}>
+                  </div>
+                  <div class="col-md-10" style="font-size:15px;color: white;cursor: pointer;display: flex;align-items: center;" >
+                    {{item.nombre}}
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="DominioSeleccionado == item.id " class="col-12 col-md-6 CardsDominio" (click)="DominioSeleccionado=0">
+                <div class="card-body row" style="border-radius: 20px 20px 20px 20px; background: rgb(255, 138, 92) ;width:103%" >
+                  <div class="col-md-2" style="display: flex; justify-content: center;">
+                    <img style="height: 50px;" src={{item.imgLogo}}>
+                  </div>
+                  <div class="col-md-10" style="font-size:15px;color: white;cursor: pointer;display: flex;align-items: center;" >
+                    {{item.nombre}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!-- <div *ngIf="DominioSeleccionado!=1" class="col-12 col-md-6 CardsDominio" (click)="DominioSeleccionado=1">
               <div class="card-body row" style="border-radius: 20px 20px 20px 20px; background: #0C9AFE ;width:103%" >
                 <div class="col-md-2" style="display: flex; justify-content: center;">
                   <img style="height: 50px;" src="../../../assets/iconos/CMRP-Tento1.svg">
@@ -203,7 +226,7 @@
                   Confiabilidad del proceso de fabricación.
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
           <mat-error *ngIf="!userForm.invalid && DominioSeleccionado==0">Debe seleccionar un pilar para la simulación</mat-error>
           <div class="row">

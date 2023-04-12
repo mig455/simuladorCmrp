@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExamenIntentoDTO, RegistroCmrpExamenDTO } from 'src/app/Models/ExamenDTO';
+import { ConfiguracionSimuladorService } from 'src/app/shared/Services/ConfiguracionSimulador/configuracion-simulador.service';
 import { ExamenService } from 'src/app/shared/Services/Examen/examen.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ModoExamenComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _ExamenService:ExamenService
+    private _ExamenService:ExamenService,
+    private _ConfiguracionSimulador: ConfiguracionSimuladorService
   ) { }
   public migaPan = [
     {
@@ -86,7 +88,9 @@ export class ModoExamenComponent implements OnInit {
   public ResultadosPorDominio:any;
   public Take=0;
 
+  public PorcentajeMinimoAprobacion=0
   ngOnInit(): void {
+    this.ObtenerPorcentaje();
     this.ListaExamenesPorModo();
     this.ListaExamenesIncompletos();
     this.ListaExamenesConcluidos();
@@ -154,7 +158,7 @@ export class ModoExamenComponent implements OnInit {
             this.ContSimulacionesCompletadas=x.length;
             this.ContEntrenamiento=this.ContEntrenamiento+1;
             this.PromedioDominio=this.PromedioDominio+y.desempenio;
-            if(y.desempenio>=60){
+            if(y.desempenio>=this.PorcentajeMinimoAprobacion){
               this.IntentosAprobados=this.IntentosAprobados+1
             }
             if(y.numeroIntento==1){
@@ -268,9 +272,17 @@ export class ModoExamenComponent implements OnInit {
     })
   }
   ObtenerPromedioDominioPorModo(){
-    this._ExamenService.ObtenerPromedioDominioPorModo(1,this.Take).subscribe({
+    this._ExamenService.ObtenerPromedioDominioPorModo(3,this.Take).subscribe({
       next:(x)=>{
         this.ResultadosPorDominio=x
+      }
+    })
+  }
+  ObtenerPorcentaje(){
+    this._ConfiguracionSimulador.ObtenerPorcentaje().subscribe({
+      next:(x)=>{
+        this.PorcentajeMinimoAprobacion = x.porcentajeMinimoAprobacion;
+        console.log(this.PorcentajeMinimoAprobacion)
       }
     })
   }
