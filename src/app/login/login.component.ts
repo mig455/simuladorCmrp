@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
   })
   public listaConfiguracion:any;
   ngOnInit(): void {
+    this.ObtenerConfiguracionSimulador();
     this.userForm.patchValue({
       Email:this.CamposLogin.email,
       Password:this.CamposLogin.password,

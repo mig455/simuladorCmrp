@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
   public listaConfiguracion:any;
 
   ngOnInit(): void {
-
+    this.ObtenerConfiguracionSimulador();
     if (this.token) {
       this.ObtenerAvatar();
       this.ObtenerMejorExamenPorUsuario();

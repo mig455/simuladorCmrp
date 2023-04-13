@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if (this.token) {
       this.ObtenerAvatar();
+      this.ObtenerConfiguracionSimulador();
     }
   }
   OpenMenu(){
