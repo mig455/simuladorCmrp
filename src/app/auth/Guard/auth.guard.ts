@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivateChild {
   canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this._SessionStorageService.validateTokken()){
+      if(this._SessionStorageService.validateTokken()){
     return true;
     }
     this._router.navigate(['Account/login'])

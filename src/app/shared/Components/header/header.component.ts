@@ -64,7 +64,6 @@ export class HeaderComponent implements OnInit {
   }
   OpenMenu(){
 
-    console.log(document.getElementsByClassName('matmenuCustom')[0].clientWidth)
 
   }
   resiseMenu(e:any){

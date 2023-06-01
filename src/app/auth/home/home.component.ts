@@ -92,6 +92,7 @@ export class HomeComponent implements OnInit {
   public Dominio:any;
   public Take=5;
   public listaConfiguracion:any;
+  public MostrarVideo=false
 
   ngOnInit(): void {
     this.ObtenerConfiguracionSimulador();
@@ -172,7 +173,6 @@ export class HomeComponent implements OnInit {
     this._ExamenService.ObtenerPromedioDominioPorModo(1,this.Take).subscribe({
       next:(x)=>{
         if(x!=null){
-          console.log(x)
           this.ResultadosPorDominio=x
         }
       }
@@ -190,6 +190,12 @@ export class HomeComponent implements OnInit {
     this._ConfiguracionService.ObtenerConfiguracionSimulador().subscribe({
       next:(x)=>{
        this.listaConfiguracion = x
+       if(x.urlVideo != null && x.urlVideo != '' && x.urlVideo != undefined && x.urlVideo != 'null'){
+        this.MostrarVideo=true;
+       }
+       else{
+        this.MostrarVideo=false;
+       }
       }
     })
   }

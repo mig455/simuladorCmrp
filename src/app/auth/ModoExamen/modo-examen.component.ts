@@ -282,7 +282,6 @@ export class ModoExamenComponent implements OnInit {
     this._ConfiguracionSimulador.ObtenerPorcentaje().subscribe({
       next:(x)=>{
         this.PorcentajeMinimoAprobacion = x.porcentajeMinimoAprobacion;
-        console.log(this.PorcentajeMinimoAprobacion)
       }
     })
   }
