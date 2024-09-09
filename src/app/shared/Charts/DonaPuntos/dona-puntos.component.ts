@@ -14,7 +14,7 @@ export class DonaPuntosComponent implements OnInit {
   constructor() { }
   @Input() Puntos=0;
   //Dona
-  public doughnutChartOptions: ChartConfiguration['options'] = {};
+  public doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {};
   public doughnutChartData: ChartData<'doughnut',number[]> = {
     labels:["",""],
     datasets: [{
@@ -34,7 +34,7 @@ export class DonaPuntosComponent implements OnInit {
     }],
 
   };
-  public doughnutChartType: ChartType = 'doughnut';
+  public doughnutChartType: 'doughnut' = 'doughnut';
   public tresDigitos=false;
   public dosDigitos=false;
   public unDigito=false;
@@ -74,7 +74,8 @@ export class DonaPuntosComponent implements OnInit {
             }
           },
         },
-      }
+      },
+      cutout:'70%'
     }
     //Datos
     this.doughnutChartData={

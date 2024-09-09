@@ -17,7 +17,7 @@ export class DonaComponent implements OnInit {
   public dosDigitos=false;
   public unDigito=false;
   //Dona
-  public doughnutChartOptions: ChartConfiguration['options'] = {};
+  public doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {};
   public doughnutChartData: ChartData<'doughnut',number[]> = {
     labels:["",""],
     datasets: [{
@@ -36,7 +36,7 @@ export class DonaComponent implements OnInit {
       ]
     }]
   };
-  public doughnutChartType: ChartType = 'doughnut';
+  public doughnutChartType: 'doughnut' = 'doughnut';
   ngOnChanges(changes: SimpleChanges): void {
     if(this.Puntos>=0){
       this.Puntos=Math.floor(this.Puntos)
@@ -53,6 +53,9 @@ export class DonaComponent implements OnInit {
     }
     else{
       this.ValoresChartInicio()
+    }
+    if (this.chart) {
+      this.chart.update();
     }
   }
 
@@ -73,8 +76,9 @@ export class DonaComponent implements OnInit {
             }
           },
         },
-      }
-    }
+      },
+      cutout: '70%'
+    };
     //Datos
     this.doughnutChartData={
       labels:["",""],
@@ -111,7 +115,8 @@ export class DonaComponent implements OnInit {
             }
           },
         },
-      }
+      },
+      cutout: '70%'
     }
     //Datos
     this.doughnutChartData={
@@ -133,4 +138,5 @@ export class DonaComponent implements OnInit {
       }]
     }
   }
+  
 }
